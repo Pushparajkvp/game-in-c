@@ -1,0 +1,98 @@
+
+      if(dh+dy>briy && dy<briy+brih)
+      {
+          if(dx<brix+briw && dx>brix+briw)
+          {
+              game->dog.x = brix+briw;
+              dx=brix+briw;
+            //  printf("1 %f\n",brix);
+          }
+          else if(dx>brix && dx < brix)
+          {
+              game->dog.x = brix-dw;
+              dx=brix-dw;
+http://www.pornhub.com/view_video.php?viewkey=2248664
+           //   printf("2 %f\n",brix);
+
+          }
+      }
+      if(dx+dw>brix && dx<brix+briw)
+      {
+          if(dy<briy+brih && dy>briy)
+          {
+              game->dog.y = briy+brih;
+              game->dog.dy = 0;
+              //     printf("3 %f\n",brix);
+          }else if(dy+dh>briy && dy < briy)
+          {
+              game->dog.y = briy-dh;
+              game->dog.dy = 0;
+              game->dog.bools = 1;
+            //  printf("4 %f\n",dx);
+          }
+      }
+
+
+
+
+
+
+
+https://www.youtube.com/watch?v=TSG4_VU8vKE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       if(dy+dh>briy && dy<brih+briy)
+      {
+          if(dx+dw>brix && dx<brix)
+          {
+              game->dog.x = brix - dw;
+              printf("3");
+           //   dx=briw-dw;
+          }
+          else if(dx<brix+briw && dx+dw>brix+briw)
+          {
+              game->dog.x = brix+briw;
+              printf("4");
+           //dx=brix+briw;
+          }
+      }
+      if(dx+dw>brix && dx<brix+briw)
+      {
+          if(dy+dh>briy && dy<briy)
+           {
+               game->dog.y = briy-dh;
+               game->dog.dy = 0;
+               game->dog.bools = 1;
+              // dy=briy-dh;
+http://www.realgfporn.com/videos/amateur-roleplay%3A-dad-fucks-daughter%27s-ass-11575.html?utm_source=multitubes&utm_medium=multitubes&utm_campaign=multitubes#.V0gDZPnR-hd
+               printf("1");
+           }
+          else if(dy<briy+brih && dy+dh>briy+brih)
+          {
+              game->dog.y = briy+brih;
+http://xhamster.com/movies/2975210/mom_friend_makes_him_a_man.html
+              game->dog.dy = 0;
+http://www.pornjam.com/video/although-you-are-my-stepdaughter-i-m-going-to-fuck-you/?utm_campaign=multitubes&utm_medium=compra+trafico&utm_source=www.namasteporn.com
+             // dy=briy+brih;
+https://www.tnaflix.com/euro-porn/Smart-geezer-lures-his-son's-girlfriend/video821149?utm_source=porn+marathon&utm_medium=WEB%2FMobile&utm_campaign=porn+marathon
+              printf("2");
+http://www.pornjam.com/video/dad-i-m-going-to-be-late-for-class/
+          }
+      }
+http://www.pornjam.com/video/punished-by-dad-1/
