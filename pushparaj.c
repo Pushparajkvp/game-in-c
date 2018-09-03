@@ -1,10 +1,9 @@
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_image.h"
 #include<stdio.h>
-#include<conio.h>
 #include<time.h>
 int r,q;
-const float grav=0.01;
+const float grav=0.3;
 
 typedef struct
 {
@@ -91,7 +90,8 @@ int collidebull(game *game,int j)
     float bx=game->bullets[j].x,by=game->bullets[j].y,bw=game->bullets[j].ix/2,bh=game->bullets[j].iy/2;
     for(i=0;i<101;i++)
     {
-        bw=game->bullets[j].ix/2,bh=game->bullets[j].iy/2;
+        bw=game->bullets[j].ix/2;
+        bh=game->bullets[j].iy/2;
         if(bx>0 && by>0)
         {
         float brix=game->brick[i].x+game->screen,briy=game->brick[i].y,briw=game->brick[i].ix,brih=game->brick[i].iy-20;
@@ -105,7 +105,10 @@ int collidebull(game *game,int j)
         if(by<briy+brih && by+bh>brih+briy && bx+bw>brix && bx<brix+briw)
             return 1;
 
-         brix=game->target[i].x,briy=game->target[i].y,briw=game->target[i].ix/2,brih=game->target[i].iy;
+        brix=game->target[i].x;
+        briy=game->target[i].y;
+        briw=game->target[i].ix/2;
+        brih=game->target[i].iy;
           bw=game->bullets[i].ix/5;
           bh=game->bullets[i].iy/2;
           if(brix>0 && briy>0)
@@ -221,7 +224,8 @@ int ebcollide(game *game,int j)
     float bx=game->ebullet[j].x,by=game->ebullet[j].y,bw=game->ebullet[j].ix/2,bh=game->ebullet[j].iy/2;
     for(i=0;i<101;i++)
     {
-        bw=game->ebullet[j].ix/2,bh=game->ebullet[j].iy/2;
+        bw=game->ebullet[j].ix/2;
+        bh=game->ebullet[j].iy/2;
         if(bx>0 && by>0)
         {
         float brix=game->brick[i].x+game->screen,briy=game->brick[i].y,briw=game->brick[i].ix,brih=game->brick[i].iy-20;
@@ -235,7 +239,10 @@ int ebcollide(game *game,int j)
         if(by<briy+brih && by+bh>brih+briy && bx+bw>brix && bx<brix+briw)
             return 1;
 
-          brix=game->target[i].x,briy=game->target[i].y,briw=game->target[i].ix/2,brih=game->target[i].iy;
+        brix=game->target[i].x;
+        briy=game->target[i].y;
+        briw=game->target[i].ix/2;
+        brih=game->target[i].iy;
           bw=game->ebullet[i].ix/5;
           bh=game->ebullet[i].iy/2;
           if(brix>0 && briy>0)
@@ -458,7 +465,10 @@ void ballscollide(game *game)
         if(by<briy+brih && by+bh>brih+briy && bx+bw>brix && bx<brix+briw && game->dog.dy<0)
             game->dog.dy=0;
     }
-    bx=game->enemy.x+game->screen,by=game->enemy.y,bw=game->enemy.ix,bh=game->enemy.iy;
+    bx=game->enemy.x+game->screen;
+    by=game->enemy.y;
+    bw=game->enemy.ix;
+    bh=game->enemy.iy;
     for(i=0;i<100;i++)
     {
      float brix=game->target[i].x,briy=game->target[i].y,briw=game->target[i].ix,brih=game->target[i].iy;
@@ -481,107 +491,107 @@ void render(SDL_Renderer *renderer,game *game)
 
     surface = IMG_Load("bomb.png");
     if(surface == NULL )
-        printf("%S",SDL_GetError());
+        printf("%s",SDL_GetError());
     game->bombs = SDL_CreateTextureFromSurface(renderer,surface);
     SDL_FreeSurface(surface);
 
     surface = IMG_Load("target.png");
     if(surface == NULL )
-        printf("%S",SDL_GetError());
+        printf("%s",SDL_GetError());
     game->targets = SDL_CreateTextureFromSurface(renderer,surface);
     SDL_FreeSurface(surface);
 
     surface = IMG_Load("dahp.png");
     if(surface == NULL )
-        printf("%S",SDL_GetError());
+        printf("%s",SDL_GetError());
     game->dahp = SDL_CreateTextureFromSurface(renderer,surface);
     SDL_FreeSurface(surface);
 
     surface = IMG_Load("re.png");
     if(surface == NULL )
-        printf("%S",SDL_GetError());
+        printf("%s",SDL_GetError());
     game->re = SDL_CreateTextureFromSurface(renderer,surface);
     SDL_FreeSurface(surface);
 
     surface = IMG_Load("daname.png");
     if(surface == NULL )
-        printf("%S",SDL_GetError());
+        printf("%s",SDL_GetError());
     game->daname = SDL_CreateTextureFromSurface(renderer,surface);
     SDL_FreeSurface(surface);
 
 
     surface = IMG_Load("enemyname.png");
     if(surface == NULL )
-        printf("%S",SDL_GetError());
+        printf("%s",SDL_GetError());
     game->enemyname = SDL_CreateTextureFromSurface(renderer,surface);
     SDL_FreeSurface(surface);
 
 
     surface = IMG_Load("dastand.png");
     if(surface == NULL )
-        printf("%S",SDL_GetError());
+        printf("%s",SDL_GetError());
     game->texture[0] = SDL_CreateTextureFromSurface(renderer,surface);
     SDL_FreeSurface(surface);
 
     surface = IMG_Load("enemystand.png");
     if(surface == NULL )
-        printf("%S",SDL_GetError());
+        printf("%s",SDL_GetError());
     game->etexture[0] = SDL_CreateTextureFromSurface(renderer,surface);
     SDL_FreeSurface(surface);
 
     surface = IMG_Load("dawalk1.png");
     if(surface == NULL )
-        printf("%S",SDL_GetError());
+        printf("%s",SDL_GetError());
     game->texture[1] = SDL_CreateTextureFromSurface(renderer,surface);
     SDL_FreeSurface(surface);
 
 
     surface = IMG_Load("enemywalk1.png");
     if(surface == NULL )
-        printf("%S",SDL_GetError());
+        printf("%s",SDL_GetError());
     game->etexture[1] = SDL_CreateTextureFromSurface(renderer,surface);
     SDL_FreeSurface(surface);
 
     surface = IMG_Load("dawalk2.png");
     if(surface == NULL )
-        printf("%S",SDL_GetError());
+        printf("%s",SDL_GetError());
     game->texture[2] = SDL_CreateTextureFromSurface(renderer,surface);
     SDL_FreeSurface(surface);
 
     surface = IMG_Load("enemywalk2.png");
     if(surface == NULL )
-        printf("%S",SDL_GetError());
+        printf("%s",SDL_GetError());
     game->etexture[2] = SDL_CreateTextureFromSurface(renderer,surface);
     SDL_FreeSurface(surface);
 
     surface = IMG_Load("dawalk1left.png");
     if(surface == NULL )
-        printf("%S",SDL_GetError());
+        printf("%s",SDL_GetError());
     game->texture[3] = SDL_CreateTextureFromSurface(renderer,surface);
     SDL_FreeSurface(surface);
 
     surface = IMG_Load("enemywalk1left.png");
     if(surface == NULL )
-        printf("%S",SDL_GetError());
+        printf("%s",SDL_GetError());
     game->etexture[3] = SDL_CreateTextureFromSurface(renderer,surface);
     SDL_FreeSurface(surface);
 
     surface = IMG_Load("dawalk2left.png");
     if(surface == NULL )
-    printf("%S",SDL_GetError());
+    printf("%s",SDL_GetError());
     game->texture[4]=SDL_CreateTextureFromSurface(renderer,surface);
     SDL_FreeSurface(surface);
 
     surface = IMG_Load("enemywalk2left.png");
     if(surface == NULL )
-    printf("%S",SDL_GetError());
+    printf("%s",SDL_GetError());
     game->etexture[4]=SDL_CreateTextureFromSurface(renderer,surface);
     SDL_FreeSurface(surface);
 
 
     surface = IMG_Load("bricks.png");
     if(surface == NULL )
-        printf("%S",SDL_GetError());
+        printf("%s",SDL_GetError());
     game->bricks = SDL_CreateTextureFromSurface(renderer,surface);
     SDL_FreeSurface(surface);
 
@@ -1002,6 +1012,109 @@ void print(SDL_Renderer *renderer,game *game,int i,int q)
 
     SDL_RenderPresent(renderer);
 }
+void addbullet(game *game,int i)
+{
+    game->bomb[game->bullno].x=game->target[i].x-20-game->screen;
+    game->bomb[game->bullno].y=game->target[i].y+20;
+    game->bomb[game->bullno].dead = 0;
+    game->bullno +=1;
+    if(game->bullno>90)
+        game->bullno=0;
+}
+void enemybull(game *game)
+{
+    int i;
+    float brix=game->dog.x+game->screen,briy=game->dog.y,briw=game->dog.ix/5,brih=game->dog.iy;
+    for(i=0;i<100;i++)
+    {
+        if(game->bomb[i].dead == 0)
+        {
+            
+            float bx=game->bomb[i].x+game->screen,by=game->bomb[i].y,bw=game->bomb[i].ix/2,bh=game->bomb[i].iy/2;
+            if(bx+bw>brix && bx<brix && by+bh>briy && by<brih+briy)
+            {
+                game->dog.life -= 100;
+                game->bomb[i].dead=1;
+                game->bomb[i].x =0;
+                game->bomb[i].y=0;
+                return;
+            }
+            if(bx<brix+briw && bx+bw>brix+briw && by+bh>briy && by<brih+briy)
+            {
+                game->dog.life -= 100;
+                game->bomb[i].dead=1;
+                game->bomb[i].x =0;
+                game->bomb[i].y=0;
+                return;
+            }
+            if(by+bh>briy && by<briy && bx+bw>brix && bx<brix+briw)
+            {
+                game->dog.life -= 100;
+                game->bomb[i].dead=1;
+                game->bomb[i].x =0;
+                game->bomb[i].y=0;
+                return;
+            }
+            if(by<briy+brih && by+bh>brih+briy && bx+bw>brix && bx<brix+briw)
+            {
+                game->dog.life -= 100;
+                game->bomb[i].dead=1;
+                game->bomb[i].x =0;
+                game->bomb[i].y=0;
+                return;
+            }
+        }
+        
+    }
+    
+    brix=game->enemy.x+game->screen;
+    briy=game->enemy.y;
+    briw=game->dog.ix/5;
+    brih=game->enemy.iy;
+    
+    for(i=0;i<100;i++)
+    {
+        if(game->bomb[i].dead == 0)
+        {
+            float bx=game->bomb[i].x+game->screen,by=game->bomb[i].y,bw=game->bomb[i].ix/2,bh=game->bomb[i].iy/2;
+            if(bx+bw>brix && bx<brix && by+bh>briy && by<brih+briy)
+            {
+                game->enemy.life -= 100;
+                game->bomb[i].dead=1;
+                game->bomb[i].x =0;
+                game->bomb[i].y=0;
+                return;
+            }
+            if(bx<brix+briw && bx+bw>brix+briw && by+bh>briy && by<brih+briy)
+            {
+                game->enemy.life -= 100;
+                game->bomb[i].dead=1;
+                game->bomb[i].x =0;
+                game->bomb[i].y=0;
+                return;
+            }
+            if(by+bh>briy && by<briy && bx+bw>brix && bx<brix+briw)
+            {
+                game->enemy.life -= 100;
+                game->bomb[i].dead=1;
+                game->bomb[i].x =0;
+                game->bomb[i].y=0;
+                return;
+            }
+            if(by<briy+brih && by+bh>brih+briy && bx+bw>brix && bx<brix+briw)
+            {
+                game->enemy.life -= 100;
+                game->bomb[i].dead=1;
+                game->bomb[i].x =0;
+                game->bomb[i].y=0;
+                return;
+            }
+        }
+        
+    }
+}
+
+
 void process(game *game)
 {
   int i;
@@ -1043,7 +1156,7 @@ void process(game *game)
       else if(game->enemy.x>=(-(game->screen)+1150)  && game->dog.x<(-(game->screen)+200) && (r==3 || r==4))
       game->dog.dx=0;
 
-      if(game->screen>0+game->dog.x-400 && game->dog.dx<0 || game->screen >0+game->enemy.x-400 && game->enemy.dx<0 )
+      if((game->screen>0+game->dog.x-400 && game->dog.dx<0) || (game->screen >0+game->enemy.x-400 && game->enemy.dx<0))
       {
 
           if(game->screen >0+game->enemy.x && game->enemy.dx<0)
@@ -1208,105 +1321,6 @@ void process(game *game)
 
     game->gametime+=1;
 }
-void addbullet(game *game,int i)
-{
-game->bomb[game->bullno].x=game->target[i].x-20-game->screen;
-game->bomb[game->bullno].y=game->target[i].y+20;
-game->bomb[game->bullno].dead = 0;
-game->bullno +=1;
-if(game->bullno>90)
-    game->bullno=0;
-}
-void enemybull(game *game)
-{
-    int i;
-    float brix=game->dog.x+game->screen,briy=game->dog.y,briw=game->dog.ix/5,brih=game->dog.iy;
-    for(i=0;i<100;i++)
-    {
-        if(game->bomb[i].dead == 0)
-        {
-
-          float bx=game->bomb[i].x+game->screen,by=game->bomb[i].y,bw=game->bomb[i].ix/2,bh=game->bomb[i].iy/2;
-          if(bx+bw>brix && bx<brix && by+bh>briy && by<brih+briy)
-          {
-              game->dog.life -= 100;
-              game->bomb[i].dead=1;
-              game->bomb[i].x =0;
-              game->bomb[i].y=0;
-              return;
-          }
-          if(bx<brix+briw && bx+bw>brix+briw && by+bh>briy && by<brih+briy)
-          {
-              game->dog.life -= 100;
-              game->bomb[i].dead=1;
-              game->bomb[i].x =0;
-              game->bomb[i].y=0;
-              return;
-          }
-          if(by+bh>briy && by<briy && bx+bw>brix && bx<brix+briw)
-          {
-              game->dog.life -= 100;
-              game->bomb[i].dead=1;
-              game->bomb[i].x =0;
-              game->bomb[i].y=0;
-              return;
-          }
-          if(by<briy+brih && by+bh>brih+briy && bx+bw>brix && bx<brix+briw)
-          {
-              game->dog.life -= 100;
-              game->bomb[i].dead=1;
-              game->bomb[i].x =0;
-              game->bomb[i].y=0;
-              return;
-          }
-        }
-
-    }
-
-    brix=game->enemy.x+game->screen,briy=game->enemy.y,briw=game->dog.ix/5,brih=game->enemy.iy;
-
-   for(i=0;i<100;i++)
-    {
-        if(game->bomb[i].dead == 0)
-        {
-         float bx=game->bomb[i].x+game->screen,by=game->bomb[i].y,bw=game->bomb[i].ix/2,bh=game->bomb[i].iy/2;
-          if(bx+bw>brix && bx<brix && by+bh>briy && by<brih+briy)
-          {
-              game->enemy.life -= 100;
-              game->bomb[i].dead=1;
-              game->bomb[i].x =0;
-              game->bomb[i].y=0;
-              return;
-          }
-          if(bx<brix+briw && bx+bw>brix+briw && by+bh>briy && by<brih+briy)
-          {
-              game->enemy.life -= 100;
-              game->bomb[i].dead=1;
-              game->bomb[i].x =0;
-              game->bomb[i].y=0;
-              return;
-          }
-          if(by+bh>briy && by<briy && bx+bw>brix && bx<brix+briw)
-          {
-              game->enemy.life -= 100;
-              game->bomb[i].dead=1;
-              game->bomb[i].x =0;
-              game->bomb[i].y=0;
-              return;
-          }
-          if(by<briy+brih && by+bh>brih+briy && bx+bw>brix && bx<brix+briw)
-          {
-              game->enemy.life -= 100;
-              game->bomb[i].dead=1;
-              game->bomb[i].x =0;
-              game->bomb[i].y=0;
-              return;
-          }
-        }
-
-    }
-}
-
 
 int main(int argc,char *argv[])
 {
@@ -1417,7 +1431,7 @@ int main(int argc,char *argv[])
     }
 
 
-    SDL_DestroyTexture(game.brick);
+    SDL_DestroyTexture(game.bricks);
     for(i=0;i<7;i++)
     {
         SDL_DestroyTexture(game.texture[i]);
@@ -1433,7 +1447,7 @@ int main(int argc,char *argv[])
     SDL_DestroyTexture(game.daname);
     SDL_DestroyTexture(game.enemyname);
     SDL_DestroyTexture(game.targets);
-    SDL_DestroyTexture(game.bomb);
+    SDL_DestroyTexture(game.bombs);
     SDL_DestroyWindow(window);
     SDL_DestroyRenderer(renderer);
     IMG_Quit();
